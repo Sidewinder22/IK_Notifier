@@ -1,5 +1,10 @@
 import scrapy
 from scrapy.http import Request
+import gi
+
+gi.require_version('Notify', '0.7')
+from gi.repository import Notify
+Notify.init("last_unread_msgs_spider")
 
 class MyWebSpider(scrapy.Spider):
     name = "last_unread_msgs_spider"
@@ -26,6 +31,15 @@ class MyWebSpider(scrapy.Spider):
     def parse_main_page(self, response):
         if 'REGULAMIN FORUM' in response.body.decode():
             self.log("++++ done!")
+
+            Message = Notify.Notification.new(
+                "IK_Spider",
+                "Hi, I'm logged!",
+                "dialog-information"
+            )
+
+            Message.show()
+
         else:
             self.log("#### not done!")
 

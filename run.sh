@@ -10,7 +10,7 @@ fi
 echo -e "########### {\_Sidewinder22_/} ############"
 echo -e "IK_Spider\n"
 
-scrapy runspider scraper.py -a login_param=$1 -a password_param=$2 
+scrapy runspider src/scraper.py -a login_param=$1 -a password_param=$2 
 
 echo -e "\n########### {\_Sidewinder22_/} ###########"
 echo -e "Bye..."

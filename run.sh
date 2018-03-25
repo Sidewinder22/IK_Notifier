@@ -3,7 +3,7 @@
 if [ -z $2 ]
 then
     echo -e "Not enough arguments!"
-    echo -e "Using: \n\t$ scrapy runspider scraper.py -a login_param=[USER] -a password_param=[PASSWORD]"
+    echo -e "Using: \n\t$ ./run.sh -a login_param=[USER] -a password_param=[PASSWORD]"
     exit 1
 fi
 

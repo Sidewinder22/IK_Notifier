@@ -39,16 +39,20 @@ class MyWebSpider(scrapy.Spider):
             )
 
             Message.show()
+            return Request(url="http://instrumentyklawiszowe.com/index.php?action=unread",
+               callback=self.process_page)
 
         else:
             self.log("#### not done!")
+            return
 
+    def process_page(self, response):
+        self.log("process_page")
+        SET_SELECTOR = '.subject  windowbg2'
+        for thing in response.css(SET_SELECTOR):
 
-
-        # SET_SELECTOR = '.set'
-        # for brickset in response.css(SET_SELECTOR):
-        #
-        #     NAME_SELECTOR = 'h1 a ::text'
-        #     yield {
-        #         'name': brickset.css(NAME_SELECTOR).extract_first(),
-        #     }
+            self.log("thing")
+            NAME_SELECTOR = 'id a ::text'
+            yield {
+                'name': thing.css(NAME_SELECTOR).extract_first(),
+            }

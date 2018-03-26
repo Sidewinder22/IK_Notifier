@@ -35,18 +35,29 @@ class MyWebSpider(scrapy.Spider):
         self.log("process_page")
         SET_SELECTOR = '.windowbg2'
         NAME_SELECTOR = 'span a ::text'
+        LINK_SELECTOR = 'span a ::attr(href)'
+        NEW_MSG_SELECTOR = '//a[contains(@href, "#new")]/@href'
 
+        i = 0
+        result = ''
         for thing in response.css(SET_SELECTOR):
+            title = thing.css(NAME_SELECTOR).extract_first(),
+            link = thing.css(LINK_SELECTOR).extract_first(),
+            new_msg = thing.xpath(NEW_MSG_SELECTOR).extract(),
 
-            label =  thing.css(NAME_SELECTOR).extract_first(),
-            result = ''
-            if label[0]:
-                result += label[0]
+            if title[0]:
+                result += title[0]
+                result += ", "
+                result += '<a href="' + link[0] + '">-->></a>'
+                result += ", "
+                result += '<a href="' + next(iter(new_msg))[i]+ '">new</a>'
+                result += "\n"
+                i += 1
 
-            Message = Notify.Notification.new(
-                "Forum IK.com - nowe wątki",
-                result,
-                "dialog-information"
-            )
+        Message = Notify.Notification.new(
+            "Forum IK.com - nowe wątki",
+            result,
+            "dialog-information"
+        )
 
-            Message.show()
+        Message.show()

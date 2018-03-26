@@ -8,11 +8,11 @@ then
 fi
 
 echo -e "########### {\_Sidewinder22_/} ############"
-echo -e "IK_Spider\n"
+echo -e "IK_Spider is working..."
 
 while true;
     do
-    scrapy runspider src/scraper.py -a login_param=$1 -a password_param=$2 --nolog
+    scrapy runspider src/spider.py -a login_param=$1 -a password_param=$2 --nolog
     sleep 300
 done
 

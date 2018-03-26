@@ -40,15 +40,11 @@ class MyWebSpider(scrapy.Spider):
 
             label =  thing.css(NAME_SELECTOR).extract_first(),
             result = ''
-            print (label)
             if label[0]:
-                print(label[0])
                 result += label[0]
-                result += ', '
 
             Message = Notify.Notification.new(
                 "Forum IK.com - nowe wątki",
-                # "kom",
                 result,
                 "dialog-information"
             )

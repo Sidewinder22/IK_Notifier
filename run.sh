@@ -10,11 +10,11 @@ fi
 echo -e "########### {\_Sidewinder22_/} ############"
 echo -e "IK_Spider\n"
 
-#while true;
-#    do
-    scrapy runspider src/scraper.py -a login_param=$1 -a password_param=$2 
-#    sleep 60
-#done
+while true;
+    do
+    scrapy runspider src/scraper.py -a login_param=$1 -a password_param=$2 --nolog
+    sleep 300
+done
 
 echo -e "\n########### {\_Sidewinder22_/} ###########"
 echo -e "Bye..."

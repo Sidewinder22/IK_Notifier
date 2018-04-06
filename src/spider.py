@@ -40,12 +40,14 @@ class MyWebSpider(scrapy.Spider):
 
         i = 0
         result = ''
+        isAnyNewMsg = False
         for thing in response.css(SET_SELECTOR):
             title = thing.css(NAME_SELECTOR).extract_first(),
             link = thing.css(LINK_SELECTOR).extract_first(),
             new_msg = thing.xpath(NEW_MSG_SELECTOR).extract(),
 
             if title[0]:
+                isAnyNewMsg = True
                 result += title[0]
                 result += ", "
                 result += '<a href="' + link[0] + '">-->></a>'
@@ -54,10 +56,10 @@ class MyWebSpider(scrapy.Spider):
                 result += "\n"
                 i += 1
 
-        Message = Notify.Notification.new(
-            "Forum IK.com - nowe wątki",
-            result,
-            "dialog-information"
-        )
-
-        Message.show()
+        if isAnyNewMsg:
+            Message = Notify.Notification.new(
+                "Forum IK.com - nowe wątki",
+                result,
+                "dialog-information"
+                )
+            Message.show()

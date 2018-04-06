@@ -3,7 +3,7 @@
 if [ -z $2 ]
 then
     echo -e "Not enough arguments!"
-    echo -e "Using: \n\t$ ./run.sh \"[USER]\" \"[PASSWORD]\""
+    echo -e "Using: \n\t$ ./run.sh [USER] \"[PASSWORD]\""
     exit 1
 fi
 

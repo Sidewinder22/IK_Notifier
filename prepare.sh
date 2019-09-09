@@ -1,5 +1,7 @@
-#!/usr/bin/bash
+#!/bin/bash
 
-sudo pacman -S libnotify python-gobject
+sudo apt install libnotify-bin python-gobject
 
 pip install scrapy
+pip install vext
+pip install vext.gi

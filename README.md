@@ -3,7 +3,7 @@ This program monitor instrumentyklawiszowe.com page and notify user about unread
 ---
 
 
-Tested on ArchLinux x86_64 (Python 3.6.4).
+Tested on Debian x86_64 (Python 3.6.4).
 
 This program use scrapy framework (it's a python framework to crawl web pages).
 

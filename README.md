@@ -16,5 +16,7 @@ This program use scrapy framework (it's a python framework to crawl web pages).
 
 
 ## Using
-* $ sudo ./prepare.sh
-* $ ./run.sh
+```bash
+$ sudo ./prepare.sh
+$ ./run.sh
+```
